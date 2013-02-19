@@ -1,0 +1,19 @@
+ul.nav {
+    list-style: none;
+    background: #d5d5d5;
+}
+
+ul.nav li {
+    display: inline-block;
+}
+
+ul.nav a {
+    padding: 0 15px;
+    color: blue;
+    text-decoration: none;
+    font-size: 2em;
+}
+
+ul.nav a:hover {
+    background: #fcd78f;
+}
