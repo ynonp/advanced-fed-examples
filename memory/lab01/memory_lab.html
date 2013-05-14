@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Gallery</title>
+    <style>
+        #gallery {
+            list-style: none;
+        }
+        #gallery img {
+            width: 200px;
+        }
+
+        #gallery li {
+            display: inline-block;
+            margin: 30px;
+            vertical-align: top;
+        }
+        body {
+            height: 100%;
+        }
+
+        html { height: 100%; }
+
+        .overlay {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            position: fixed;
+            top:0;
+            left: 0;
+        }
+
+        .lightbox {
+            position: fixed;
+            top: 50px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<ul id="gallery">
+    <li><img src="http://wordandimage.files.wordpress.com/2008/04/lolcat-attack.png"/></li>
+    <li><img src="http://simplegreenorganichappy.com/wp-content/uploads/2010/09/cute-lolcat-ears-hear-you.jpg"/></li>
+    <li><img src="http://talklikeaphysicist.com/wp-content/uploads/2009/03/phyics-lolcat.jpg"/></li>
+    <li><img src="http://wordandimage.files.wordpress.com/2008/04/dumbledore-is-gay-lolcat.jpg"/></li>
+    <li><img src="http://thewondergallery.files.wordpress.com/2013/01/lolcats3-1.jpg"/></li>
+    <li><img src="http://thewondergallery.files.wordpress.com/2013/01/lolcat.jpg"/></li>
+    <li><img src="http://owni.fr/files/2011/10/lolcat.jpg"/></li>
+    <li><img
+            src="http://upload.wikimedia.org/wikipedia/commons/8/88/I_IZ_SERIUS_ADMNIM_THIZ_IZ_SERIUS_BIZNIS_lolcat.jpg"/>
+    </li>
+    <li><img src="http://upload.wikimedia.org/wikipedia/commons/4/4c/Lolcat.jpg"/></li>
+    <li><img src="http://allthingsd.com/files/2011/11/social-media-lolcat-300x249-feature.png"/></li>
+    <li><img src="http://cdn.uproxx.com/wp-content/uploads/2013/01/lolcat-does-human-impression-impersonation.jpg"/>
+    </li>
+</ul>
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+    var $body   = $(document.body);
+
+    $body.on('click', '.overlay', function() {
+        $('.overlay').remove();
+        $('.lightbox').remove();
+        $(window).off('resize.img') ;
+    });
+
+    $('img').on('click', function() {
+        var overlay = $('<div class="overlay"></div>');
+        var img     = $('<img>');
+
+        img.attr('src', $(this).attr('src') );
+        img.addClass('lightbox');
+
+        img.on('load', function() {
+            $body.append(overlay);
+            $body.append(img);
+
+            img.css('left', ( ( window.innerWidth - img.width() ) / 2 ) + 'px' );
+
+            $(window).on('resize.img', function() {
+                img.css('left', ( ( window.innerWidth - img.width() ) / 2 ) + 'px' );
+            });
+
+        });
+
+
+    });
+</script>
+
+</body>
+</html>

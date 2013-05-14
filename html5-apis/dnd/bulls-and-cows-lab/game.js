@@ -99,11 +99,24 @@
   var tokens = document.querySelectorAll('#playing-tokens div');
   for ( var i=0; i < tokens.length; i++ ) {
     tokens[i].addEventListener('click', board.start_guess );
+    tokens[i].addEventListener('dragstart', board.start_guess );
   }
 
   var spots = document.querySelectorAll('.game-row div');
   for ( var i=0; i < spots.length; i++ ) {
     spots[i].addEventListener('click', board.play_guess );
+
+
+    spots[i].addEventListener('drop', board.play_guess );
+    spots[i].addEventListener('dragover', function(e) {
+      e.preventDefault();
+      return false;
+    });
+
+    spots[i].addEventListener('dragenter', function(e) {
+      e.preventDefault();
+      return false;
+    });
   }
 
 }(this));
