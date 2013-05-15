@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="vendor/mocha.css" />
+</head>
+<body>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="vendor/chai.js"></script>
+  <script src="vendor/mocha.js"></script>
+
+  <div id="mocha"></div>
+  <script>
+    var assert = chai.assert;
+
+    mocha.setup('bdd');
+    describe("A suite", function() {
+      it("contains spec with an expectation", function() {
+        assert( 1 === 1 );
+      });
+    });
+    mocha.run();
+  </script>
+</body>
+</html>

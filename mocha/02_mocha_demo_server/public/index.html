@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href="jquery.navrender.css" rel="stylesheet"/>
+
+  <style>
+    html, body, ul { padding:  0; margin: 0; }
+  </style>
+
+</head>
+<body>
+  <ul></ul>
+
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.min.js"></script>
+  <script src="jquery.navrender.js"></script>
+
+  <script>
+    $('ul').navrender({ url: 'http://mochademo-ynonp.dotcloud.com/data.json'});
+  </script>
+</body>
+</html>
