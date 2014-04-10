@@ -1,0 +1,11 @@
+<div class="row-fluid">
+  <div class="span-12">
+    <ul class="nav nav-tabs nav-stacked" data-bind="foreach: contacts">
+      <li><a href="#" data-bind="text: name, attr: { href: '#/contacts/' + id }"></a></li>
+    </ul>
+  </div>
+</div>
+
+<hr />
+<h2>Debug</h2>
+<div data-bind="text: ko.toJSON($root)"></div>

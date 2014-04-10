@@ -1,0 +1,13 @@
+<p>Welcome To The Jungle</p>
+<div class="container" data-bind="foreach: tasks">
+  <label>
+    <input type="CHECKBOX" data-bind="checked: done" />
+    <span data-bind="text: text"></span>
+  </label>
+</div>
+<button data-bind="click: save">Save</button>
+
+<hr />
+<h2>Debug</h2>
+<div data-bind="text: ko.toJSON($root)"></div>
+

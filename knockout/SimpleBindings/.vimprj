@@ -1,0 +1,7 @@
+let g:alternateExtensions_js = "html"
+let g:alternateExtensions_html = "js"
+
+let g:alternateSearchPath = 'sfr:../view_models,sfr:../views'
+let g:alternateRelativeFiles = 1
+
+
