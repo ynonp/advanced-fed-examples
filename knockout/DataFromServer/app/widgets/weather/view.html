@@ -1,0 +1,16 @@
+<div class="weather-widget">
+<div class="city-selector">
+  <select data-bind="
+    options: available_cities,
+    optionsCaption: 'Select a city...',
+    optionsText: 'name',
+    optionsValue: 'val',
+    value: current_city,
+    event: { change:  city_changed }">
+  </select>
+</div>
+
+<div class="weather-description">
+  <p data-bind="text: description"></p>
+</div>
+</div>

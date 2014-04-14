@@ -8,3 +8,12 @@ body {
   padding: 5px;
 }
 
+.loader {
+  visibility: hidden;
+}
+
+.loader.active {
+  visibility: visible;
+}
+
+

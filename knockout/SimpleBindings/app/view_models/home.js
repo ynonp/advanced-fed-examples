@@ -1,8 +1,10 @@
 define(function (require) {
-  var app = require('durandal/app'),
-    ko = require('knockout');
+  var ko = require('knockout');
 
-  var self = {};
+  var self = {
+    name: ko.observable('Batu'),
+    image: 'profile.png'
+  };
 
   return self;
 });

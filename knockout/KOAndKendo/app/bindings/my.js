@@ -10,14 +10,16 @@ define(function(require) {
         var observable = valueAccessor();
         observable(this.value);
       });
+
+      ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+        $(element).data("kendoDatePicker").destroy();
+      });
     },
     update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
       var value = valueAccessor();
       var valueUnwrapped = ko.unwrap(value);
 
       $(element).val(valueUnwrapped);
-
-      console.log('update');
     }
   };
 });

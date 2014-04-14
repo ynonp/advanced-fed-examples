@@ -1,0 +1,10 @@
+<div>
+  <input type="text" data-bind="value: tags" />
+  <ul data-bind="foreach: tags">
+    <li data-bind="text: $data, click: $parent.remove_tag"></li>
+  </ul>
+</div>
+
+<hr />
+<h2>Debug</h2>
+<div data-bind="text: ko.toJSON($root)"></div>

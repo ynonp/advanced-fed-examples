@@ -25,7 +25,10 @@ define(function (require) {
 
   app.configurePlugins({
     router:true,
-    dialog: true
+    dialog: true,
+    widget: {
+      kinds: ['weather']
+    }
   });
 
   app.start().then(function() {

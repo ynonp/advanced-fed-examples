@@ -1,4 +1,18 @@
 <section>
+  <form data-bind="submit: goto_city">
+    <select data-bind="options: cities, optionsText: 'name', optionsValue: 'val', value: selectedCity">
+    </select>
+
+    <input type="submit" value="Show" />
+  </form>
+</section>
+
+<section>
+  <div data-bind="weather: {}"></div>
+  <div data-bind="weather: {}"></div>
+  <div data-bind="weather: {}"></div>
+  <div data-bind="weather: {}"></div>
+  <div data-bind="weather: {}"></div>
 </section>
 
 <hr />

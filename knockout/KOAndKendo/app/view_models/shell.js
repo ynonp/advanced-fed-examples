@@ -6,6 +6,7 @@ define(function (require) {
     activate: function () {
       router.map([
         { route: '', title:'Home', moduleId: 'vm/home', nav: true },
+        { route: 'page2', title:'Page2', moduleId: 'vm/page2', nav: true }
       ]).buildNavigationModel();
 
       return router.activate();

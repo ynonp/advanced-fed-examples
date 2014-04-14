@@ -1,0 +1,16 @@
+<div>
+  <input type="text" data-bind="value: curr_task_name">
+  <button data-bind="click: add_task">Add</button>
+</div>
+
+<ul data-bind="foreach: tasks">
+  <li>
+    <span data-bind="text: $data"></span>
+    <!-- function remove_task is called with current item as its first parameter -->
+    <button data-bind="click: $parent.remove_task">Remove</button>
+  </li>
+</ul>
+
+<hr />
+<h2>Debug</h2>
+<div data-bind="text: ko.toJSON($root)"></div>
