@@ -1,0 +1,24 @@
+{
+    "app/config/*.js": {
+        "type": "config"
+    },
+    "app/models/*.js": {
+        "type": "model"
+    },
+    "app/view_models/*.js": {
+        "type": "vm",
+        "alternate": "app/views/{}.html"
+    },
+    "app/views/*.html": {
+        "type": "view",
+        "alternate": "app/view_models/{}.js"
+    },
+    "app/widgets/*/viewmodel.js": {
+        "alternate": "app/widgets/{}/view.html"
+    },
+    "app/widgets/*/view.html": {
+        "type":"widget",
+        "alternate": "app/widgets/{}/viewmodel.js"
+    }
+
+}

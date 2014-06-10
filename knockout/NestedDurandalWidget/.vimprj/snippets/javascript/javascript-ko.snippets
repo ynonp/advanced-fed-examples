@@ -1,0 +1,37 @@
+snippet koo
+	ko.observable(${1})${2}
+
+snippet koc
+	ko.computed(function() {
+		${1}
+	});
+
+snippet kocp
+	ko.computed({
+		read: function() {
+			${1}
+		},
+		write: function(value) {
+			${2}
+		}
+	});
+
+snippet kob
+	ko.bindingHandlers.${1} = {
+		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+			${2}
+
+			ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+				// This will be called when the element is removed by Knockout or
+				// if some other part of your code calls ko.removeNode(element)
+				${4}
+			});
+		},
+		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+			${3}
+		}
+	};
+	${5}
+
+snippet koa
+	ko.observableArray(${1})${2}

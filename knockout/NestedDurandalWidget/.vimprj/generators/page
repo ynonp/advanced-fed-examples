@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var touch = require("touch");
+
+var define = function(f) { return f(); };
+
+var routes_template = function(routes) {
+  return '' +
+'define(function() {\n' +
+' return ' + JSON.stringify(routes, null, 4) + ';\n' +
+'});\n';
+};
+
+var routes_file = fs.readFileSync('app/config/routes.js').toString();
+var routes = eval(routes_file);
+
+var new_pages = process.argv.slice(2);
+
+new_pages.forEach(function(page) {
+  var title = page.replace(/\b(\w)/g, function(v) { return v.toUpperCase(); });
+  var module_id = page.replace(/(\w)\s+(\w)/g, "$1_$2");
+  var route = page.replace(/(\w)\s+(\w)/g, "$1-$2");
+
+  routes.push(
+    { route: route, title:title, moduleId: 'vm/' + module_id, nav: true }
+  );
+
+  touch("app/views/" + module_id + ".html");
+  console.log("app/views/" + module_id + ".html");
+
+  touch("app/view_models/" + module_id + ".js");
+  console.log('app/view_models/' + module_id + ".js");
+});
+
+
+fs.writeFile('app/config/routes.js', routes_template(routes));
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+/*
+ * add_plugin.js
+ * Copyright (C) 2014 ynonperek <ynonperek@ynons-air>
+ *
+ * Distributed under terms of the MIT license.
+ */
+
+var fs = require('fs');
+var mkdirp = require('mkdirp');
+var touch = require("touch");
+
+var define = function(f) {
+  return f();
+};
+
+var plugins_template = function(plugins) {
+  return '' +
+'define(function() {\n' +
+' return ' + JSON.stringify(plugins, null, 4) + ';\n' +
+'});\n';
+};
+
+var plugins_file = fs.readFileSync('app/config/plugins.js').toString();
+var plugins = eval(plugins_file);
+
+plugins.widget = plugins.widget || {};
+plugins.widget.kinds = plugins.widget.kinds || [];
+
+// cut out node and file name
+var widgets_to_add = process.argv.slice(2);
+var widgets_folder = 'app/widgets/';
+
+widgets_to_add.forEach(function(newWidget) {
+  if ( plugins.widget.kinds.indexOf(newWidget) === -1 ) {
+    plugins.widget.kinds.push(newWidget);
+  }
+
+  mkdirp(widgets_folder + newWidget, function() {
+    touch(widgets_folder + newWidget + '/view.html');
+    console.log(widgets_folder + newWidget + '/view.html');
+
+    touch(widgets_folder + newWidget + '/viewmodel.js');
+    console.log(widgets_folder + newWidget + '/viewmodel.js');
+  });
+});
+
+fs.writeFile('app/config/plugins.js', plugins_template(plugins));
+
+
+
+
+
